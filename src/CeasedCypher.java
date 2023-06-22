@@ -4,6 +4,6 @@ public class CeasedCypher {
         System.out.println(fileName);
     }
     public static void decode(String fileName){
-        System.out.println(fileName);
+        System.out.println("1");
     }
 }
