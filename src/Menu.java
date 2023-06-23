@@ -11,7 +11,6 @@ public class Menu {
             Розшифрування: натисніть 1
             Шифрування: натисніть 2
             Вихід з програми: натисніть 0
-        
             """;
     final CeasedCypher ceasedCypher = new CeasedCypher();
     final Scanner scanner = new Scanner(System.in);
@@ -25,14 +24,14 @@ public class Menu {
             int menuItem = scanner.nextInt();
 
             switch (menuItem) {
-                case DECODE_FILE -> itemToEncodeFile();
-                case ENCODE_FILE -> itemToDecodeFile();
+                case DECODE_FILE -> itemToDecodeFile();
+                case ENCODE_FILE -> itemToEncodeFile();
                 case EXIT_NUMBER -> itemToExit();
             }
 
         }
     }
-    private void itemToExit(){
+    public void itemToExit(){
         isRunning = false;
         System.out.println("Thank you for secret work, bye");
     }
