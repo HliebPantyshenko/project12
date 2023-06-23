@@ -20,14 +20,13 @@ public class CeasedCypher {
     private static final String IS_KEY =
             """
             Чи маєте ви ключ?
-            Введіть "так", якщо маєте.
-            Інші варіанти розглядаються як те, що ви не маєте ключа.
+            Введіть "так" або "ні"
             """;
     private static final String SELECT_KEY = "Введіть ключ: ";
     private static final String IS_READABLE =
             """
             Чи можете ви прочитати текст?
-            Введіть "так", якщо можете.
+            Введіть "так" або "ні"
             """;
     public static void encode(String fileName){
         System.out.println(REAL_MESSAGE);
@@ -101,11 +100,16 @@ public class CeasedCypher {
             System.out.println(decodedText);
             Scanner scanner = new Scanner(System.in);
             String answer = scanner.nextLine();
-            if(answer.equals("так")) {
-                isRunning = false;
-                return decodedText;
-            }
             key+=1;
+            switch (answer){
+                case "так" -> {
+                    isRunning = false;
+                    return decodedText;
+                }
+                case "ні" -> {
+                }
+                default ->  throw new SelectedOptionIsNotValid("Invalid selection!");
+            }
         }
         return null;
     }
@@ -171,12 +175,17 @@ public class CeasedCypher {
         Scanner scanner = new Scanner(System.in);
         System.out.println(IS_KEY);
         String answer = scanner.nextLine();
-        if(answer.equals("так")){
-            System.out.println(SELECT_KEY);
-            int number = scanner.nextInt();
-            return number;
+        switch (answer){
+            case "так" -> {
+                System.out.println(SELECT_KEY);
+                int number = scanner.nextInt();
+                return number;
+            }
+            case "ні" -> {
+                return -1;
+            }
+            default ->  throw new SelectedOptionIsNotValid("Invalid selection!");
         }
-        return -1;
     }
     private static void isStillRunning(){
         Scanner scanner = new Scanner(System.in);
@@ -185,6 +194,7 @@ public class CeasedCypher {
         switch (answer){
             case "так" -> new Menu().run();
             case "ні" -> new Menu().itemToExit();
+            default ->  throw new SelectedOptionIsNotValid("Invalid selection!");
         }
     }
 }
