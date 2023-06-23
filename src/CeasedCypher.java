@@ -53,7 +53,6 @@ public class CeasedCypher {
         String decodeMessage = decodeProcess(key);
 
         creatingNewFile(decodeMessage);
-
         message = "";
         isStillRunning();
     }
