@@ -27,6 +27,7 @@ public class Menu {
                 case DECODE_FILE -> itemToDecodeFile();
                 case ENCODE_FILE -> itemToEncodeFile();
                 case EXIT_NUMBER -> itemToExit();
+                default ->  throw new SelectedOptionIsNotValid("Invalid selection!");
             }
 
         }
